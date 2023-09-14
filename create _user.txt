@@ -1,0 +1,75 @@
+# CREATING POSTGRESQL NEW ROOT USER ACCESS WITH ALL PRIVILEGES
+
+## Switch to the PostgreSQL User: Open your terminal (or PowerShell on Windows) ## and become the PostgreSQL user using the following command:
+^
+#($) sudo -u postgres
+- This command allows you to switch to the "postgres" user, which typically has - administrative privileges.
+
+
+## Create a New User: 
+- To create a new user with PostgreSQL access, use the 
+- "createuser" command. Replace <your_name> with the desired username:
+^
+#($) createuser <your_name>
+- This command adds a new user to PostgreSQL
+
+
+## Login to PostgreSQL: You can log in to PostgreSQL using the "psql" command:
+^
+#($) psql
+- This command opens the PostgreSQL command-line interface. By default, 
+- you will log in as the "postgres" user, which gives you full access to the 
+- PostgreSQL - system and to a default <postgres> database.
+
+
+## Create a New Database (Optional): 
+- If you want to create a new database, you can use the "createdb" command. 
+- Replace <dbname> with your desired database name:
+^
+#($) createdb <dbname>
+- This step is optional if you already have a database you want to grant 
+- privileges on.
+
+
+## Set a Password for the Created User: 
+- To provide a password to the newly created user, while inside the PostgreSQL 
+- command-line interface, use the following command. Replace <createUser> with 
+- the username you created earlier:
+
+#($) psql <dbname>
+- Log in to a database system
+
+#(dbname) ALTER USER <createUser> WITH ENCRYPTED PASSWORD '<password>';
+- This sets a password for the user to enhance security.
+^
+#(dbname) ALTER USER postgres PASSWORD NULL;
+- To REMOVE password created for the user.
+
+## Grant Desired Privileges: 
+- PostgreSQL does not provide all privileges at once like MySQL.
+- You need to grant privileges one by one. 
+- To grant privileges to the user, use the following command, 
+- replacing <createduser> with the 
+- username and <provide_role> with the specific privilege or role you want to 
+- grant:
+
+#(dbname) ALTER ROLE <createduser> WITH <provide_role>;
+- Repeat this step for each privilege you want to assign to the user.
+^
+#(dbname) \du
+- To see list of users with their created roles
+- or use
+#(dbname) SELECT * FROM pg_user;
+- To see a list of user with some private data
+
+#(dbname) \q
+- Use to quit from postgresql database system.
+
+## Optional: 
+- Remove PostgreSQL User: If needed, you can either remove the "postgres" user 
+- for security purposes or provide it with a password. Ensure you have 
+- administrative access before making such changes.
+
+- These steps allow you to create a new PostgreSQL user with specific 
+- privileges and enhance the security of your database system. Always use 
+- strong passwords and follow best practices for database security.
