@@ -1,4 +1,3 @@
 # postgresql
-# postgresql
-# postgresql
-# postgresql
+
+''' CREATING POSTGRESQL NEW ROOT USER ACCESS WITH ALL PRIVILEGES '''
