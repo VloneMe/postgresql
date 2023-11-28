@@ -1,0 +1,11 @@
+\c database_name to connect
+\l shows all databases
+\d shows all tables in database
+\? shows all commands
+\h shows queries you can use
+q will allow to leave the list / quit
+
+
+
+Useful link Below
+https://medium.com/codex/intro-to-postgresql-c8da31335c34
